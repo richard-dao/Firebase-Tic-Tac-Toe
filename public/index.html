@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firebase Hosting, Authentication and Realtime Database Demo</title>
+    <script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.3.1/firebase-performance.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyB7iQjURSmOibbICQoMgIoxfpGsGVq01jo",
+    authDomain: "multiplayer-ttt-game.firebaseapp.com",
+    projectId: "multiplayer-ttt-game",
+    storageBucket: "multiplayer-ttt-game.appspot.com",
+    messagingSenderId: "325943691372",
+    appId: "1:325943691372:web:a698758249784e0ee8b049",
+    measurementId: "G-JGV7KL48ZW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+    <style>
+      body{
+        text-align: center;
+        padding: 0;
+        margin: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      td {
+        width: 100px;
+        height: 100px;
+      }
+      table {
+        margin: 5px auto;
+      }
+      .vert {
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+      }
+      .hori {
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="signedOut">
+      <button id="signInButton">Login with Google</button>
+    </section>
+
+    <section id="signedIn" hidden="true">
+      <div id="signedInInfo"></div>
+      <button id="lookForGameButton">Join Game</button>
+      <button id="signOutButton">Sign Out</button>
+    </section>
+    <section id="gameBody" hidden="true">
+      <h1>Tic Tac Toe Board</h1>
+      <h2 id="status">Waiting for Player</h2>
+      <!--Board-->
+      <table>
+        <tr>
+          <td id="0"><h1 id="x0" hidden="true">X</h1> <h1 id="o0" hidden="true">O</h1></td>
+          <td id="1" class="vert"><h1 id="x1" hidden="true">X</h1><h1 id="o1" hidden="true">O</h1></td>
+          <td id="2"><h1 id="x2" hidden="true">X</h1><h1 id="o2" hidden="true">O</h1></td>
+        </tr>
+        <tr>
+          <td id="3" class="hori"><h1 id="x3" hidden="true">X</h1><h1 id="o3" hidden="true">O</h1></td>
+          <td id="4" class="vert hori"><h1 id="x4" hidden="true">X</h1><h1 id="o4" hidden="true">O</h1></td>
+          <td id="5" class="hori"><h1 id="x5" hidden="true">X</h1><h1 id="o5" hidden="true">O</h1></td>
+        </tr>
+        <tr>
+          <td id="6"><h1 id="x6" hidden="true">X</h1><h1 id="o6" hidden="true">O</h1></td>
+          <td id="7" class="vert"><h1 id="x7" hidden="true">X</h1><h1 id="o7" hidden="true">O</h1></td>
+          <td id="8"><h1 id="x8" hidden="true">X</h1><h1 id="o8" hidden="true">O</h1></td>
+        </tr>
+      </table>
+
+
+    </section>
+
+    <script src="app.js">
+
+    </script>
+  </body>
+</html>
+
+
+
+
