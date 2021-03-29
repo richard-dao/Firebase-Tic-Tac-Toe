@@ -759,7 +759,7 @@ function checkWin(moves){
         return 2;
     }
     else{
-        if(moves.length == 8){
+        if(moves.length == 9){
             endGame(3);
             return 2;
         }
