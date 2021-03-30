@@ -392,7 +392,7 @@ function makeMove(whoseMove, gameID){
 
     }
     else{
-        statusPlayer.innerHTML = `Waiting for opponent`;
+        statusPlayer.innerHTML = `Opponent Move`;
     }
 
 }
