@@ -163,7 +163,6 @@ let unsubscribe = db.collection('test_games').onSnapshot(snapshot => {
                 statusPlayer.innerHTML = `Game Over`;
             }
             else if (change.doc.data().status == 1){
-                updateGrid(change.doc.data().moves); // Probably Unnecessary
                 makeMove(change.doc.data().whoseMove, gameIDG, change.doc.data().moves);
             }
             else{
@@ -234,12 +233,17 @@ const eightO = document.getElementById('o8');
 let o8BoolHide = true;
 
 let opponentIDG;
+let oponnentNameG;
+
+const userName = document.getElementById('userName');
 const userStats = document.getElementById('userStats');
 const opponentStats = document.getElementById('opponentStats');
+const opponentName = document.getElementById('opponentName');
 function updateGrid(moveList){
     const db = firebase.firestore();
     db.collection('test_users').doc(userIDG).get().then((doc) => {
-        userStats.innerHTML = `Your Wins: ${doc.data().wins}`;
+        userStats.innerHTML = `Wins: ${doc.data().wins} Losses: ${doc.data().losses} Draws: ${doc.data().draws}`;
+        userName.innerHTML = `${doc.data().name}`;
     })
     
     const db2 = firebase.firestore();
@@ -250,7 +254,8 @@ function updateGrid(moveList){
             console.log(opponentIDG);
             const db3 = firebase.firestore();
             db3.collection('test_users').doc(opponentIDG).get().then((doc) => {
-                opponentStats.innerHTML = `Opponent Wins: ${doc.data().wins}`;
+                opponentStats.innerHTML = `Wins: ${doc.data().wins} Losses: ${doc.data().losses} Draws: ${doc.data().draws}`;
+                opponentName.innerHTML = `${doc.data().name}`;
             })
         }
         else{
@@ -260,7 +265,8 @@ function updateGrid(moveList){
             console.log(opponentIDG);
             const db3 = firebase.firestore();
             db3.collection('test_users').doc(opponentIDG).get().then((doc) => {
-                opponentStats.innerHTML = `Opponent Wins: ${doc.data().wins}`;
+                opponentStats.innerHTML = `Wins: ${doc.data().wins} Losses: ${doc.data().losses} Draws: ${doc.data().draws}`;
+                opponentName.innerHTML = `${doc.data().name}`;
             })
         }
     })
@@ -778,7 +784,7 @@ function endGame(winner){
         db.collection('test_users').doc(userIDG).update({
             draws: firebase.firestore.FieldValue.increment(1)
         })
-        setTimeout(location.reload.bind(location), 3);
+        setTimeout(location.reload.bind(location), 1500);
     }
     else if (winner == playerNumber){ // If Winner
         alert("You win!");
@@ -789,7 +795,7 @@ function endGame(winner){
         db.collection('test_users').doc(userIDG).update({
             wins: firebase.firestore.FieldValue.increment(1)
         })
-        setTimeout(location.reload.bind(location), 3);
+        setTimeout(location.reload.bind(location), 1500);
     }
     else{ // If loser
         alert("You lose!");
@@ -797,7 +803,7 @@ function endGame(winner){
         db.collection('test_users').doc(userIDG).update({
             losses: firebase.firestore.FieldValue.increment(1)
         })
-        setTimeout(location.reload.bind(location), 3);
+        setTimeout(location.reload.bind(location), 1500);
         
     }
 
